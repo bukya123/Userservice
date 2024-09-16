@@ -2,6 +2,7 @@ package com.example.usermicroservice.security.modules;
 
 import com.example.usermicroservice.Modules.Role;
 import com.example.usermicroservice.Modules.User;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
@@ -10,6 +11,7 @@ import java.util.Collection;
 import java.util.List;
 
 
+@JsonDeserialize //basically we are passing customuser details over network it get converted into json object-->this is called deserialize. In spring its security threat to pass .so if it ok -->then mention this
 public class CustomUserDetails implements UserDetails {
     private String username;
     private String password;
@@ -19,6 +21,10 @@ public class CustomUserDetails implements UserDetails {
     private boolean credentialsNonExpired;
     private boolean enabled;
 
+
+    public CustomUserDetails(){
+
+    }
     public CustomUserDetails(User user) {
         this.username=user.getName();
         this.password=user.getPassword();

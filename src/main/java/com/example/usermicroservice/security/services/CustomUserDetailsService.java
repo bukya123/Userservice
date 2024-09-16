@@ -6,9 +6,11 @@ import com.example.usermicroservice.security.modules.CustomUserDetails;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.stereotype.Service;
 
 import java.util.Optional;
 
+@Service
 public class CustomUserDetailsService implements UserDetailsService {
     private UserRepository userRepository;
     public CustomUserDetailsService(UserRepository userRepository) {
@@ -26,7 +28,7 @@ public class CustomUserDetailsService implements UserDetailsService {
 
         UserDetails userDetails=new CustomUserDetails(user);
 
-
+        return userDetails;
 
     }
 }
